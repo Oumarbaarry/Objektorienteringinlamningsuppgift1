@@ -1,5 +1,6 @@
 public abstract class växter implements VäxterInterface{
 
+    //inkapsling
     
     private double längd;
     private String name;
