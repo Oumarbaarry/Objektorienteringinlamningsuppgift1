@@ -9,16 +9,13 @@ import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) throws IOException{
-      //Här gör jag variablar
+      
 
         String firstLine = "";
         String secondLine = "";
         String[] list;
         String kundtext = "src/Inlämning2/Kunder.txt";
 
-/*Här skapar jag en Bufferedreader och inut i den sätter jag in en Filereader där jag läser in min kundtext
-  Sedan använder jag en While loop så att programmet läser igenom textfilen tills den kmr till null
- */
 
         try {
             BufferedReader file = new BufferedReader(new FileReader(kundtext));
@@ -26,13 +23,7 @@ public class Main {
                 secondLine += firstLine + "\n";
             }
 
- /* Här delar jag strängen med hjälp utav split när det blir en ny rad, gör dessutom så att alla udda tal i listan
- blir datum och det jämna talen blir namn och personnummer.
-
-Skapar en string där användaren får en fråga om att skriva namn elr personnummer
- Sedan kallar jag på min metod hittaMedlem för att kunna hitta platsen i listan som användaren har eller inte.
- Gjort minus 1 om personen inte finns med
-  */
+ 
             list = secondLine.split("\n");
             String svar = JOptionPane.showInputDialog("Skriv ett namn eller personnummer: ");
             int kundPos = hittaMedlem(svar, list);
@@ -40,10 +31,6 @@ Skapar en string där användaren får en fråga om att skriva namn elr personnu
 
 
 
-/* Använder mig av LocaleDate för att kunna räkna ut alla som betalt inom ett år tillbaka genom att få ut dagens datum
-och göra minus ett år sedan parsar jag in dom, och sedan får jag även ut dom som varit medlemar tidigare
-och dom som inte varit medlemmar alls
-*/
 
                 LocalDate today = LocalDate.now();
                 LocalDate ettÅrTillbaka = today.minusYears(1);
@@ -63,11 +50,7 @@ och dom som inte varit medlemmar alls
             System.out.println("Felmeddelande");
         }
     }
-     /* Skapar en metod hittaMedlem som ska ränka ut plats i listan,
-    Jag gör en for loop där jag lägger alla som är medlemmar inut "i" så när programmet kör igenom listan så går det igenom
-    så länge medlemen contains "i"
-     */
-
+     
     private static int hittaMedlem(String member, String[] list) {
         for (int i = 0; i < list.length; i++) {
             if (i % 2 == 0) {
